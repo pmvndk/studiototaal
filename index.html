@@ -53,6 +53,8 @@ img{max-width:100%;display:block}
 .snd[aria-pressed="true"] .eq i{animation:eq .9s ease-in-out infinite}
 .snd .eq i:nth-child(2){animation-delay:.2s}.snd .eq i:nth-child(3){animation-delay:.45s}.snd .eq i:nth-child(4){animation-delay:.1s}
 @keyframes eq{0%,100%{height:3px}50%{height:12px}}
+.snd.wacht{animation:wacht 1.6s ease-in-out infinite}
+@keyframes wacht{0%,100%{box-shadow:0 0 0 0 rgba(249,3,126,.55)}60%{box-shadow:0 0 0 10px rgba(249,3,126,0)}}
 @media (max-width:720px){.bar nav{display:none}}
 
 /* hero */
@@ -157,7 +159,7 @@ footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max
 .proto{background:var(--w);color:var(--k);text-align:center;padding:7px 16px}
 
 @media (prefers-reduced-motion:reduce){
-  .fill,.tick div,.snd[aria-pressed="true"] .eq i{animation:none}
+  .fill,.tick div,.snd[aria-pressed="true"] .eq i,.snd.wacht{animation:none}
   .flash.on,.shake{animation:none}
   html{scroll-behavior:auto}
 }
@@ -296,20 +298,21 @@ footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max
   list.forEach((a,i)=>a.addEventListener('ended',()=>{if(!on)return;cur=(i+1)%list.length;list[cur].currentTime=0;list[cur].volume=.6;list[cur].play().catch(()=>{})}));
   function fade(a,to,ms){const from=a.volume,t0=performance.now();return new Promise(r=>{(function step(t){const k=Math.min(1,(t-t0)/ms);a.volume=from+(to-from)*k;k<1?requestAnimationFrame(step):r()})(t0)})}
   const btn=document.getElementById('snd'),lab=document.getElementById('sndLabel');
-  function set(v){on=v;btn.setAttribute('aria-pressed',v);lab.textContent=v?'Tribune uit':'Tribune aan'}
-  // Standaard aan. Browsers laten pas geluid toe na een eerste klik of toets,
-  // dus als autoplay geweigerd wordt start de tribune bij de eerste interactie.
+  // aria-pressed volgt wat er echt klinkt; 'wacht' = staat aan maar browser wacht op een klik
   let playing=false;
-  async function start(){const a=list[cur];if(playing)return true;a.volume=0;try{await a.play();playing=true;fade(a,.6,1500);return true}catch(e){return false}}
-  async function stop(){const a=list[cur];playing=false;await fade(a,0,600);a.pause()}
+  function ui(){btn.setAttribute('aria-pressed',playing);lab.textContent=playing?'Tribune uit':'Tribune aan';btn.classList.toggle('wacht',on&&!playing)}
+  function set(v){on=v;ui()}
+  // Standaard aan. Browsers laten pas geluid toe na een eerste klik of toets (scrollen telt niet),
+  // dus als autoplay geweigerd wordt start de tribune bij de eerste interactie.
+  async function start(){const a=list[cur];if(playing)return true;a.volume=0;try{await a.play();playing=true;ui();fade(a,.6,1500);return true}catch(e){ui();return false}}
+  async function stop(){const a=list[cur];playing=false;ui();await fade(a,0,600);a.pause()}
   set(true);
-  start().then(ok=>{if(ok)return;
-    const go=e=>{if(btn.contains(e.target))return;if(on)start();['pointerdown','keydown','touchend'].forEach(t=>removeEventListener(t,go,true))};
-    ['pointerdown','keydown','touchend'].forEach(t=>addEventListener(t,go,true));
-  });
+  const go=e=>{if(btn.contains(e.target))return;if(on&&!playing)start().then(ok=>{if(ok)off()})};
+  const evs=['pointerdown','keydown','touchend'],off=()=>evs.forEach(t=>removeEventListener(t,go,true));
+  start().then(ok=>{if(!ok)evs.forEach(t=>addEventListener(t,go,true))});
   btn.addEventListener('click',async()=>{
-    if(on){set(false);await stop()}
-    else{set(true);if(!await start())set(false)}
+    if(playing){set(false);await stop()}
+    else{set(true);if(await start())off();else set(false)}
   });
   const flash=document.getElementById('flash'),word=document.getElementById('fansWord');
   document.getElementById('goal').addEventListener('click',()=>{
