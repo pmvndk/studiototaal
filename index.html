@@ -147,6 +147,25 @@ img{max-width:100%;display:block}
 .card p{margin:0;color:#3D3D3A;font-size:15px;max-width:42ch}
 
 /* contact */
+/* amateur */
+.am{padding-block:clamp(64px,9vw,120px);border-bottom:1px solid var(--line)}
+.am .in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start}
+.am .txt{position:sticky;top:calc(env(safe-area-inset-top,0px) + 90px);display:grid;gap:22px;min-width:0}
+.am h2{font-size:clamp(48px,7vw,108px);text-wrap:balance}
+.am .txt>p{margin:0;max-width:46ch;color:#CFCFCB;font-size:clamp(16px,1.3vw,18px)}
+.am ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.am li{display:grid;grid-template-columns:44px 1fr;gap:4px 12px;padding-block:14px;border-bottom:1px solid var(--line)}
+.am li b{font:400 22px/1 var(--disp);color:#F9037E}
+.am li strong{font:400 22px/1 var(--disp);text-transform:uppercase;letter-spacing:.01em}
+.am li span{grid-column:2;color:var(--g);font-size:14px;max-width:44ch}
+.am .note{color:var(--g)}
+.am .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.am figure{margin:0;display:grid;gap:8px;min-width:0}
+.am figure div{aspect-ratio:4/5;max-width:100%;overflow:hidden;background:#1a1a1a}
+.am figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.am figure:hover img{transform:scale(1.04)}
+.am figcaption{display:flex;justify-content:space-between;gap:10px;color:var(--g)}
+@media (max-width:860px){.am .in{grid-template-columns:1fr}.am .txt{position:static}}
 .contact{padding-block:clamp(70px,10vw,140px) clamp(40px,6vw,70px)}
 .contact .mail{font:400 clamp(30px,7.4vw,118px)/1 var(--disp);text-transform:uppercase;overflow-wrap:anywhere;user-select:all;margin-top:18px}
 .contact .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:24px}
@@ -170,7 +189,7 @@ footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max
 <body>
 <header class="bar"><div class="wrap">
   <a class="logo" href="#top"><svg class="bal" viewBox="0 0 255 255" aria-hidden="true"><circle cx="127.5" cy="127.5" r="117.7" fill="none" stroke="#F9037E" stroke-width="19.6"/></svg>Studio Totaal</a>
-  <nav class="cap"><a href="#maken">Wat we maken</a><a href="#clubs">Clubs</a><a href="#contact">Contact</a></nav>
+  <nav class="cap"><a href="#maken">Wat we maken</a><a href="#clubs">Clubs</a><a href="#amateur">Amateur</a><a href="#contact">Contact</a></nav>
   <button class="snd" id="snd" aria-pressed="true" title="Tribunegeluid aan of uit"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sndLabel">Tribune uit</span></button>
 </div></header>
 
@@ -228,6 +247,32 @@ footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max
   </div>
 </section>
 
+<section class="am wrap" id="amateur">
+  <div class="in">
+    <div class="txt">
+      <span class="cap" style="color:var(--g)">Voor de amateurclub</span>
+      <h2 class="disp">Voor de club om de hoek</h2>
+      <p>Nederland is een verenigingsland. Ruim 3.000 voetbalclubs, elk met een eigen kantine, eigen kleuren en eigen verhalen. Daar maken we een collectie van die leden graag dragen en bewaren. Geen catalogus van de kledingleverancier, maar jacks, sjaals, petten, vaantjes en mokken in één lijn.</p>
+      <ol>
+        <li><b>01</b><strong>Jullie verhaal</strong><span>Kleuren, oprichtingsjaar, bijnaam, de kantine. We zoeken wat de club eigen maakt.</span></li>
+        <li><b>02</b><strong>Eén collectie</strong><span>Van trainingsjack tot vaantje, alles in dezelfde lijn. Binnen een week ligt er een eerste opzet.</span></li>
+        <li><b>03</b><strong>Eigen clubshop</strong><span>Leden en ouders bestellen zelf, de club hoeft geen voorraad in te kopen.</span></li>
+      </ol>
+      <div><a class="btn" href="#contact">Vertel over jullie club</a></div>
+      <span class="cap note">Voorbeeldcollectie voor de verzonnen club VV Hoogwater, sinds 1923. AI-visualisaties ter inspiratie.</span>
+    </div>
+    <div class="grid">
+      <figure><div><img src="img/amateur/langs-de-lijn.jpg" alt="Langs de lijn: trainingsjacks voor vrijwilligers en trainers, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Langs de lijn</span><span>01</span></figcaption></figure>
+      <figure><div><img src="img/amateur/trainingsjack.jpg" alt="Trainingsjack: retro, met geborduurd embleem, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Trainingsjack</span><span>02</span></figcaption></figure>
+      <figure><div><img src="img/amateur/sjaal.jpg" alt="Sjaal: gebreid, met jaartal, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Sjaal</span><span>03</span></figcaption></figure>
+      <figure><div><img src="img/amateur/pet.jpg" alt="Pet: gewassen katoen, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Pet</span><span>04</span></figcaption></figure>
+      <figure><div><img src="img/amateur/vaantje.jpg" alt="Vaantje: vilt, voor kantine en uitwedstrijd, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Vaantje</span><span>05</span></figcaption></figure>
+      <figure><div><img src="img/amateur/mok.jpg" alt="Mok: emaille, voor achter de bar, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Mok</span><span>06</span></figcaption></figure>
+      <figure><div><img src="img/amateur/jubileumdoos.jpg" alt="Jubileumdoos: sjaal, boek en pin, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Jubileumdoos</span><span>07</span></figcaption></figure>
+      <figure><div><img src="img/amateur/tas.jpg" alt="Tas: canvas, voor de kleedkamer, voorbeeld voor VV Hoogwater" loading="lazy"></div><figcaption class="cap"><span>Tas</span><span>08</span></figcaption></figure>
+    </div>
+  </div>
+</section>
 <section class="contact wrap" id="contact">
   <span class="cap" style="color:var(--g)">Contact</span>
   <div class="mail" id="mail">hallo@studiototaal.com</div>
