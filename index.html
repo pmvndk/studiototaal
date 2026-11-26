@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio Totaal | Clubcollecties voor de fans</title>
+<meta name="description" content="Studio Totaal maakt clubcollecties in kleine oplage. Sjaals, shirts en jubileumdozen voor clubs met een verhaal, ontworpen en geregeld vanuit Amsterdam.">
+<link rel="canonical" href="https://www.studiototaal.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Studio Totaal | For the fans">
+<meta property="og:description" content="Niet zomaar fanwear. Maar clubgeschiedenis die je kan dragen.">
+<meta property="og:url" content="https://www.studiototaal.com/">
+<meta property="og:image" content="https://www.studiototaal.com/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;700&display=swap">
+<style>
+/* Richting "For the fans": alleen zwart en wit, kleur komt uitsluitend uit de foto's. Anton groot en vet, Archivo klein en nuchter. Bewust één look. */
+:root{
+  --k:#0A0A0A; --w:#FFFFFF; --g:#8F8F8B; --line:rgba(255,255,255,.16); --lineK:rgba(10,10,10,.14);
+  --disp:"Anton","Impact","Haettenschweiler","Arial Narrow Bold",sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:clamp(16px,3.2vw,44px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--k);color:var(--w);font:400 16px/1.6 var(--body);margin:0;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{padding-inline:var(--gut)}
+.cap{font:500 11px/1.3 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.disp{font-family:var(--disp);font-weight:400;text-transform:uppercase;line-height:.86;letter-spacing:.005em;margin:0}
+.fit{display:block;width:max-content;max-width:none;white-space:nowrap;font-size:16.2vw}
+.light{background:var(--w);color:var(--k)}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+
+/* balk */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--k);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.bar .logo{font:400 22px/1 var(--disp);letter-spacing:.01em;text-transform:uppercase;display:inline-flex;align-items:center;gap:9px}
+/* de bal uit het Vorm & Gever-beeldmerk, het enige roze op de pagina */
+.bal{display:block;width:.78em;height:.78em;flex:none}
+.tick .bal{display:inline-block;width:.5em;height:.5em;margin-inline:.1em;vertical-align:.12em}
+.bar nav{display:flex;gap:clamp(14px,2.4vw,28px)}
+.bar nav a{opacity:.75}.bar nav a:hover{opacity:1}
+.snd{display:inline-flex;align-items:center;gap:10px;background:var(--w);color:var(--k);border:0;border-radius:999px;padding:9px 16px 9px 12px;font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.snd .eq{display:flex;align-items:flex-end;gap:2px;height:12px}
+.snd .eq i{display:block;width:3px;height:3px;background:currentColor}
+.snd[aria-pressed="true"] .eq i{animation:eq .9s ease-in-out infinite}
+.snd .eq i:nth-child(2){animation-delay:.2s}.snd .eq i:nth-child(3){animation-delay:.45s}.snd .eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:3px}50%{height:12px}}
+@media (max-width:720px){.bar nav{display:none}}
+
+/* hero */
+.hero{padding-block:clamp(20px,4vw,48px) 0}
+.hero h1{margin:0}
+.hero .photo{position:relative;margin-top:clamp(14px,2vw,26px);aspect-ratio:16/7;max-width:100%;overflow:hidden;background:#1a1a1a}
+.hero .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15);transition:filter 1.2s ease}
+@property --r{syntax:"<length>";inherits:false;initial-value:0px}
+.hero .photo .kleur{position:absolute;inset:0;filter:none;--r:0px;clip-path:circle(var(--r) at var(--mx,50%) var(--my,50%));transition:--r .4s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.hero .photo.spot .kleur{--r:clamp(90px,13vw,190px)}
+.hero .photo{cursor:crosshair}
+.hero .photo .tag{position:absolute;left:14px;bottom:12px;background:var(--k);padding:6px 10px}
+.hero .sub{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;padding-block:22px 64px}
+.hero .sub p{margin:0;max-width:44ch;font-size:clamp(16px,1.5vw,19px);color:#D8D8D4}
+@media (max-width:600px){.hero .photo{aspect-ratio:4/3}}
+
+/* for the fans, kleur door beeld */
+.fans{padding-block:clamp(40px,7vw,90px);border-top:1px solid var(--line);position:relative}
+.fill{background:url(img/unsplash/groen.jpg) 50% 40%/cover;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:pan 26s ease-in-out infinite alternate}
+.fill.b{background-image:url(img/unsplash/sjaalmuur.jpg);animation-name:panb}
+@keyframes panb{from{background-position:10% 30%}to{background-position:90% 55%}}
+@keyframes pan{from{background-position:20% 30%}to{background-position:80% 60%}}
+.fans .row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px}
+.fans .row p{margin:0;max-width:52ch;color:#CFCFCB}
+.goal{background:transparent;color:var(--w);border:2px solid var(--w);padding:14px 26px;font:400 26px/1 var(--disp);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .15s,color .15s}
+.goal:hover{background:var(--w);color:var(--k)}
+.flash{position:fixed;inset:0;pointer-events:none;z-index:50;background:var(--w);opacity:0}
+.flash.on{animation:flash .5s ease-out}
+@keyframes flash{0%{opacity:.85}100%{opacity:0}}
+.shake{animation:shake .5s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}
+
+/* statement: zin loopt woord voor woord van grijs naar zwart, zoals bij ABC */
+.state{padding-block:0 clamp(64px,9vw,120px)}
+.zin-blok{height:190vh;position:relative}
+.zin-stage{position:sticky;top:48px;min-height:calc(100svh - 48px);display:grid;align-content:center;padding-block:40px}
+.zin{font-size:clamp(46px,8.6vw,138px);max-width:12.5ch}
+.zin w{display:inline-block;color:#D9D9D5}
+.state .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px 48px;padding-top:22px;position:relative;overflow:hidden}
+/* lijn trekt met de scroll van links naar rechts, kolommen schuiven mee in */
+.state .cols::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--k);transform-origin:left;transform:scaleX(var(--lijn,1))}
+.state .cols>div{transform:translateX(var(--x,0px));clip-path:inset(-4px var(--wis,0%) -4px 0);will-change:transform,clip-path}
+.state .cols b{display:block;font:400 24px/1 var(--disp);text-transform:uppercase;letter-spacing:.01em;margin-bottom:10px}
+.state .cols p{margin:0;color:#3D3D3A;max-width:40ch}
+
+/* twee rijen die met de scroll tegen elkaar in schuiven, zoals bij Elante */
+.rows{padding-block:clamp(20px,3vw,36px);overflow:hidden;display:grid;gap:clamp(12px,1.6vw,20px)}
+.rij{display:flex;gap:clamp(12px,1.6vw,20px);width:max-content;will-change:transform}
+.ph{position:relative;overflow:hidden;background:#1a1a1a;margin:0;flex:none;width:clamp(150px,17vw,270px);aspect-ratio:4/5}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph figcaption{position:absolute;left:10px;bottom:10px;right:10px;display:flex;flex-wrap:wrap;gap:4px}
+.ph figcaption span{background:var(--k);color:var(--w);padding:5px 8px}
+.ph figcaption span+span{background:var(--w);color:var(--k)}
+.rows .note{color:var(--g);text-align:center;padding-inline:var(--gut);margin-top:12px;font-size:10px}
+
+/* ticker */
+.tick{overflow:hidden;border-block:1px solid var(--line);padding-block:14px;white-space:nowrap}
+.tick div{display:inline-block;font:400 clamp(28px,4vw,52px)/1 var(--disp);text-transform:uppercase;animation:tick 38s linear infinite;padding-right:0}
+.tick span{-webkit-text-stroke:1.2px var(--w);color:transparent;padding-inline:.35em}
+.tick span.s{color:var(--w);-webkit-text-stroke:0}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* wat we maken */
+.make{padding-block:clamp(64px,9vw,120px)}
+.make .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,44px)}
+.make .head p{margin:0;max-width:40ch;color:#CFCFCB}
+.make ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.make li{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-block:8px 6px}
+.make li .n{font:400 clamp(44px,8vw,112px)/.95 var(--disp);text-transform:uppercase;-webkit-text-stroke:1.5px var(--w);color:transparent;transition:color .25s}
+.make li:hover .n{color:var(--w)}
+.make li .d{color:var(--g);font-size:14px;text-align:right}
+
+/* clubs */
+.clubs{padding-block:clamp(64px,9vw,120px)}
+.clubs .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,44px)}
+.clubs .head h2{font-size:clamp(44px,7vw,104px)}
+.clubs .head p{margin:0;max-width:44ch;color:#3D3D3A}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px}
+.card{display:grid;gap:14px;align-content:start;min-width:0}
+.card .bd{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;background:var(--k)}
+.card .bd img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2) brightness(.55);transition:filter .6s,transform 1.2s}
+.card:hover .bd img,.card.live .bd img{filter:grayscale(0) brightness(.7)}
+.card .nm{position:absolute;left:16px;right:16px;bottom:14px;color:var(--w);font:400 clamp(44px,5.4vw,72px)/.88 var(--disp);text-transform:uppercase}
+.card .nm small{display:block;font-size:.42em;letter-spacing:.04em;margin-bottom:.15em}
+.card .tg{position:absolute;left:14px;top:14px;color:var(--w)}
+.card .ed{position:absolute;right:14px;top:14px;color:var(--w)}
+.card h3{margin:0;font:400 22px/1 var(--disp);text-transform:uppercase}
+.card p{margin:0;color:#3D3D3A;font-size:15px;max-width:42ch}
+
+/* contact */
+.contact{padding-block:clamp(70px,10vw,140px) clamp(40px,6vw,70px)}
+.contact .mail{font:400 clamp(30px,7.4vw,118px)/1 var(--disp);text-transform:uppercase;overflow-wrap:anywhere;user-select:all;margin-top:18px}
+.contact .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.btn{display:inline-block;border:2px solid var(--w);padding:13px 20px;font:700 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;background:transparent;color:var(--w);cursor:pointer}
+.btn:hover{background:var(--w);color:var(--k)}
+.contact p{margin:0;color:#CFCFCB;max-width:50ch}
+
+footer{padding-block:0 30px}
+footer .big{margin-top:10px}
+footer .meta{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;color:var(--g);border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max-width:110ch}
+.proto{background:var(--w);color:var(--k);text-align:center;padding:7px 16px}
+
+@media (prefers-reduced-motion:reduce){
+  .fill,.tick div,.snd[aria-pressed="true"] .eq i{animation:none}
+  .flash.on,.shake{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#top"><svg class="bal" viewBox="0 0 255 255" aria-hidden="true"><circle cx="127.5" cy="127.5" r="117.7" fill="none" stroke="#F9037E" stroke-width="19.6"/></svg>Studio Totaal</a>
+  <nav class="cap"><a href="#maken">Wat we maken</a><a href="#clubs">Clubs</a><a href="#contact">Contact</a></nav>
+  <button class="snd" id="snd" aria-pressed="true" title="Tribunegeluid aan of uit"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sndLabel">Tribune uit</span></button>
+</div></header>
+
+<section class="hero wrap" id="top">
+  <h1 class="disp fit" data-fit>Studio Totaal</h1>
+  <div class="photo ph-hero" id="heroPhoto"><img src="img/unsplash/sjaalmuur.jpg" alt="Volle tribune met sjaals boven de hoofden" fetchpriority="high"><img class="kleur" src="img/unsplash/sjaalmuur.jpg" alt="" aria-hidden="true"><span class="cap tag">Het vak, zondag 14.30</span></div>
+  <div class="sub">
+    <p>Clubcollecties in kleine oplage. Sjaals, shirts en jubileumdozen voor clubs met een verhaal, gemaakt voor de mensen die elke week op de tribune staan.</p>
+    <span class="cap" style="color:var(--g)">Amsterdam · clubmerchandise</span>
+  </div>
+</section>
+
+<section class="fans wrap" id="fans">
+  <h2 class="disp fit fill" data-fit id="fansWord">For the fans</h2>
+  <div class="row">
+    <p>Merch die op de tribune hoort, niet in de webshop-uitverkoop.<br>Elk stuk begint bij wat supporters zingen, dragen en bewaren.</p>
+    <button class="goal" id="goal">Goal!</button>
+  </div>
+</section>
+
+<section class="state light" id="state">
+  <div class="zin-blok" id="zinblok"><div class="zin-stage wrap"><h2 class="disp zin" id="zin">Niet zomaar fanwear. Maar clubgeschiedenis die je kan dragen.</h2></div></div>
+  <div class="cols wrap">
+    <div><b>Kleine oplage</b><p>Genummerd en op voorinschrijving. Een collectie is pas gemaakt als de supporters hem willen hebben.</p></div>
+    <div><b>Eén lijn</b><p>Sjaal, shirt, poster en doos ontworpen als één geheel, met de club en haar archief als bron.</p></div>
+    <div><b>Volledig geregeld</b><p>Vaste partners voor breien, borduren, weven en drukken. De club heeft één aanspreekpunt.</p></div>
+  </div>
+</section>
+
+<section class="rows" id="rows" aria-label="Sfeerbeelden ter inspiratie">
+  <div class="rij" data-dir="-1"><figure class="ph"><img src="img/items/inspo-01.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-02.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-03.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-04.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-05.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-06.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-07.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-08.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-09.jpg" alt="" loading="lazy"></figure></div>
+  <div class="rij" data-dir="1"><figure class="ph"><img src="img/items/inspo-10.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-11.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-12.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-13.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-14.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-15.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-16.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-17.jpg" alt="" loading="lazy"></figure><figure class="ph"><img src="img/items/inspo-18.jpg" alt="" loading="lazy"></figure></div>
+  <p class="note cap">Sfeerbeelden ter inspiratie</p>
+</section>
+
+<div class="tick" aria-hidden="true"><div id="tickRow"></div></div>
+
+<section class="make wrap" id="maken">
+  <div class="head"><h2 class="disp" style="font-size:clamp(44px,7vw,104px)">Wat we maken</h2><p>Van één gebreide sjaal tot een complete jubileumcollectie.</p></div>
+  <ul>
+    <li><span class="n">Sjaals</span><span class="d">Gebreid of jacquard, genummerd</span></li>
+    <li><span class="n">Shirts en jacks</span><span class="d">Retro, training, supporters</span></li>
+    <li><span class="n">Jubileumdozen</span><span class="d">Gelimiteerd, met certificaat</span></li>
+    <li><span class="n">Posters</span><span class="d">Wedstrijd, seizoen, jubileum</span></li>
+    <li><span class="n">Pins en patches</span><span class="d">Emaille, geborduurd</span></li>
+  </ul>
+</section>
+
+<section class="clubs light wrap" id="clubs">
+  <div class="head"><h2 class="disp">Drie clubs, in concept</h2><p>Verzonnen clubs om te laten zien hoe een collectie eruitziet. De kleur komt van de tribune.</p></div>
+  <div class="cards">
+    <article class="card"><div class="bd"><img src="img/unsplash/rook.jpg" alt=""><span class="cap tg">Concept</span><span class="cap ed">100 jaar</span><div class="nm"><small>SC</small>Kalkzand</div></div><h3>Jubileumdoos</h3><p>Genummerde sjaal, archiefposter en pin in één doos, voor het eeuwfeest in 2027.</p></article>
+    <article class="card"><div class="bd"><img src="img/unsplash/shirt.jpg" alt=""><span class="cap tg">Concept</span><span class="cap ed">Uitshirt</span><div class="nm"><small>VV</small>Hoogwater</div></div><h3>Supporterscollectie</h3><p>Trainingsjack, sjaal en hangtag rond het nieuwe uitshirt.</p></article>
+    <article class="card"><div class="bd"><img src="img/unsplash/ultras.jpg" alt=""><span class="cap tg">Concept</span><span class="cap ed">Kampioen</span><div class="nm"><small>RKSV</small>Ommezwaai</div></div><h3>Kampioenseditie</h3><p>Shirt, poster en een doos voor de selectie, in één kleur.</p></article>
+  </div>
+</section>
+
+<section class="contact wrap" id="contact">
+  <span class="cap" style="color:var(--g)">Contact</span>
+  <div class="mail" id="mail">hallo@studiototaal.com</div>
+  <div class="row"><button class="btn" id="copy">Kopieer adres</button><p id="copyMsg">Vertel over de club en het moment. Binnen een week ligt er een eerste opzet.</p></div>
+</section>
+
+<footer class="wrap">
+  <div class="disp fit fill b big" data-fit aria-hidden="true">Studio Totaal</div>
+  <div class="meta cap"><span>Studio Totaal · Amsterdam</span><span>Een studio van Vorm &amp; Gever</span><span>© 2026</span></div>
+  <p class="credits">Sfeerfoto's via Unsplash: Bernd Dittrich, Elio Santos, Kyle Hinkson, Omar Ramadan, Ramses Cervantes. Productbeelden: AI-visualisaties uit voorstellen van Vorm &amp; Gever. Uitsnede en zwart-wit door Studio Totaal. Tribunegeluid: Epidemic Sound.</p>
+</footer>
+
+<div class="flash" id="flash"></div>
+
+<script>
+(function(){
+  // Koppen precies op de breedte zetten
+  const fits=[...document.querySelectorAll('[data-fit]')];
+  function fit(){fits.forEach(el=>{el.style.fontSize='100px';const w=el.parentElement.clientWidth-parseFloat(getComputedStyle(el.parentElement).paddingLeft)-parseFloat(getComputedStyle(el.parentElement).paddingRight);el.style.fontSize=(100*w/el.scrollWidth*0.995)+'px';});}
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fit);
+  addEventListener('resize',fit);fit();
+
+  // Ticker
+  const words=['For the fans','Totaal voetbal','Kleine oplage','Van de tribune','Tot de laatste doos'];
+  const bal='<svg class="bal" viewBox="0 0 255 255" aria-hidden="true"><circle cx="127.5" cy="127.5" r="117.7" fill="none" stroke="#F9037E" stroke-width="19.6"/></svg>';
+  const half=words.map((w,i)=>`<span class="${i%2?'':'s'}">${w}</span>${bal}`).join('');
+  document.getElementById('tickRow').innerHTML=half+half;
+
+  // Kleur zodra een beeld in het midden van het scherm staat
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('live',e.isIntersecting)),{rootMargin:'-35% 0px -35% 0px'});
+  document.querySelectorAll('.card').forEach(el=>io.observe(el));
+
+  // Zin: elk woord een eigen kleur, bijgewerkt per beeld
+  const rustig=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const zin=document.getElementById('zin'),zb=document.getElementById('zinblok');
+  zin.innerHTML=zin.textContent.split(' ').map(w=>'<w>'+w+'</w>').join(' ');
+  const ws=[...zin.querySelectorAll('w')];
+  const A=[217,217,213],B=[10,10,10];
+  // Rijen: boven naar links, onder naar rechts
+  const colsEl=document.querySelector('.state .cols'),cols=[...colsEl.children];
+  const rowsEl=document.getElementById('rows'),rijen=[...rowsEl.querySelectorAll('.rij')];
+  let last=-1;
+  function frame(){
+    const y=scrollY+innerHeight*1000+innerWidth;
+    if(y!==last){last=y;
+      const r=zb.getBoundingClientRect(),st=r.height-innerHeight;
+      const p=rustig?1:Math.min(1,Math.max(0,-r.top/st*1.15));
+      ws.forEach((w,i)=>{const k=Math.min(1,Math.max(0,p*(ws.length+1)-i));w.style.color=`rgb(${A.map((a,j)=>Math.round(a+(B[j]-a)*k)).join(',')})`});
+      const cr=colsEl.getBoundingClientRect();
+      if(cr.bottom>0&&cr.top<innerHeight){
+        const q=Math.min(1,Math.max(0,(innerHeight-cr.top)/(innerHeight*.75)));
+        colsEl.style.setProperty('--lijn',q.toFixed(4));
+        cols.forEach((c,i)=>{const k=Math.min(1,Math.max(0,q*1.6-i*.3));const e=1-Math.pow(1-k,3);c.style.setProperty('--x',(-(1-e)*40).toFixed(1)+'px');c.style.setProperty('--wis',((1-e)*100).toFixed(2)+'%')});
+      }
+      const rr=rowsEl.getBoundingClientRect();
+      if(rr.bottom>0&&rr.top<innerHeight){
+        const q=Math.min(1,Math.max(0,(innerHeight-rr.top)/(innerHeight+rr.height)));
+        rijen.forEach(el=>{const range=Math.max(0,el.scrollWidth-innerWidth);const d=+el.dataset.dir;
+          const x=d<0?-range*q:-range*(1-q);el.style.transform=`translate3d(${x}px,0,0)`});
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  if(!rustig)requestAnimationFrame(frame);else ws.forEach(w=>w.style.color='rgb(10,10,10)');
+
+  // Geluid: tribune en spreekkoor als lus, goal als los moment
+  const mk=s=>{const a=new Audio(s);a.preload='none';return a};
+  const list=[mk('snd/tribune.mp3'),mk('snd/chant.mp3')];let cur=0,on=false;
+  const goalA=mk('snd/goal.mp3');
+  list.forEach((a,i)=>a.addEventListener('ended',()=>{if(!on)return;cur=(i+1)%list.length;list[cur].currentTime=0;list[cur].volume=.6;list[cur].play().catch(()=>{})}));
+  function fade(a,to,ms){const from=a.volume,t0=performance.now();return new Promise(r=>{(function step(t){const k=Math.min(1,(t-t0)/ms);a.volume=from+(to-from)*k;k<1?requestAnimationFrame(step):r()})(t0)})}
+  const btn=document.getElementById('snd'),lab=document.getElementById('sndLabel');
+  function set(v){on=v;btn.setAttribute('aria-pressed',v);lab.textContent=v?'Tribune uit':'Tribune aan'}
+  // Standaard aan. Browsers laten pas geluid toe na een eerste klik of toets,
+  // dus als autoplay geweigerd wordt start de tribune bij de eerste interactie.
+  let playing=false;
+  async function start(){const a=list[cur];if(playing)return true;a.volume=0;try{await a.play();playing=true;fade(a,.6,1500);return true}catch(e){return false}}
+  async function stop(){const a=list[cur];playing=false;await fade(a,0,600);a.pause()}
+  set(true);
+  start().then(ok=>{if(ok)return;
+    const go=e=>{if(btn.contains(e.target))return;if(on)start();['pointerdown','keydown','touchend'].forEach(t=>removeEventListener(t,go,true))};
+    ['pointerdown','keydown','touchend'].forEach(t=>addEventListener(t,go,true));
+  });
+  btn.addEventListener('click',async()=>{
+    if(on){set(false);await stop()}
+    else{set(true);if(!await start())set(false)}
+  });
+  const flash=document.getElementById('flash'),word=document.getElementById('fansWord');
+  document.getElementById('goal').addEventListener('click',()=>{
+    goalA.currentTime=0;goalA.volume=.9;goalA.play().catch(()=>{});
+    const amb=list[cur];if(on){amb.volume=.2;setTimeout(()=>on&&fade(amb,.6,2000),6000)}
+    flash.classList.remove('on');word.classList.remove('shake');void flash.offsetWidth;flash.classList.add('on');word.classList.add('shake');
+  });
+
+  // Kleurcirkel onder de muis op de zwart-witfoto
+  const hp=document.getElementById('heroPhoto');
+  const zet=(x,y)=>{const r=hp.getBoundingClientRect();hp.style.setProperty('--mx',(x-r.left)+'px');hp.style.setProperty('--my',(y-r.top)+'px')};
+  hp.addEventListener('pointerenter',e=>{zet(e.clientX,e.clientY);hp.classList.add('spot')});
+  hp.addEventListener('pointermove',e=>zet(e.clientX,e.clientY));
+  hp.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hp.classList.remove('spot')});
+  hp.addEventListener('pointerdown',e=>{zet(e.clientX,e.clientY);hp.classList.add('spot')});
+  document.addEventListener('pointerdown',e=>{if(!hp.contains(e.target))hp.classList.remove('spot')});
+
+  // Adres kopiëren
+  document.getElementById('copy').addEventListener('click',()=>{
+    const msg=document.getElementById('copyMsg'),t=document.getElementById('mail').textContent;
+    navigator.clipboard.writeText(t).then(()=>msg.textContent='Adres gekopieerd.').catch(()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r);msg.textContent='Adres geselecteerd, kopieer met Cmd+C.'});
+  });
+})();
+</script>
+
+</body>
+</html>
