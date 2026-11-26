@@ -69,8 +69,14 @@ img{max-width:100%;display:block}
 .hero .photo.spot .kleur{--r:clamp(90px,13vw,190px)}
 .hero .photo{cursor:crosshair}
 .hero .photo .tag{position:absolute;left:14px;bottom:12px;background:var(--k);padding:6px 10px}
-.hero .sub{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;padding-block:22px 64px}
-.hero .sub p{margin:0;max-width:44ch;font-size:clamp(16px,1.5vw,19px);color:#D8D8D4}
+.hero .sub{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;padding-block:clamp(28px,4vw,48px)}
+.hero .sub p{margin:0;max-width:34ch;font-size:clamp(20px,2.1vw,30px);line-height:1.3;color:var(--w);text-wrap:balance}
+.hero .over{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px clamp(20px,3vw,44px);padding-block:0 clamp(56px,7vw,96px)}
+.hero .over div{display:grid;gap:10px;align-content:start;border-top:2px solid var(--w);padding-top:14px;min-width:0}
+.hero .over .cap{color:#F9037E}
+.hero .over p{margin:0;color:#CFCFCB;font-size:15px;line-height:1.55}
+@media (max-width:900px){.hero .over{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.hero .over{grid-template-columns:1fr}}
 @media (max-width:600px){.hero .photo{aspect-ratio:4/3}}
 
 /* for the fans, kleur door beeld */
@@ -202,8 +208,14 @@ footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max
   <h1 class="disp fit" data-fit>Studio Totaal</h1>
   <div class="photo ph-hero" id="heroPhoto"><img src="img/unsplash/sjaalmuur.jpg" alt="Volle tribune met sjaals boven de hoofden" fetchpriority="high"><img class="kleur" src="img/unsplash/sjaalmuur.jpg" alt="" aria-hidden="true"><span class="cap tag">Het vak, zondag 14.30</span></div>
   <div class="sub">
-    <p>Clubcollecties in kleine oplage. Sjaals, shirts en jubileumdozen voor clubs met een verhaal, gemaakt voor de mensen die elke week op de tribune staan.</p>
+    <p>Studio Totaal maakt clubcollecties in kleine oplage. Voor clubs met een verhaal, en voor de mensen die elke week langs de lijn of op de tribune staan.</p>
     <span class="cap" style="color:var(--g)">Amsterdam · clubmerchandise</span>
+  </div>
+  <div class="over">
+    <div><span class="cap">Wie we zijn</span><p>Het clublabel van ontwerpstudio Vorm &amp; Gever uit Amsterdam. Ontwerp, productie en levering in één hand, met één aanspreekpunt.</p></div>
+    <div><span class="cap">Wat we maken</span><p>Sjaals, trainingsjacks, shirts, petten, vaantjes, mokken en jubileumdozen. Alles in één lijn, rond het verhaal van de club.</p></div>
+    <div><span class="cap">Voor wie</span><p>Profclubs, supportersverenigingen en amateurclubs. Voor een jubileum, een kampioenschap of een nieuw seizoen.</p></div>
+    <div><span class="cap">Hoe het werkt</span><p>Jullie vertellen, wij ontwerpen. Binnen een week ligt er een eerste opzet, daarna regelen we productie en levering.</p></div>
   </div>
 </section>
 
