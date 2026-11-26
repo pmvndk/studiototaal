@@ -150,6 +150,11 @@ img{max-width:100%;display:block}
 .card .tg{position:absolute;left:14px;top:14px;color:var(--w)}
 .card .ed{position:absolute;right:14px;top:14px;color:var(--w)}
 .card.soon .bd img,.card.soon:hover .bd img,.card.soon.live .bd img{filter:grayscale(1) contrast(1.2) brightness(.4)}
+.card.af .bd img,.card.af:hover .bd img,.card.af.live .bd img{filter:saturate(1.3) contrast(1.08) brightness(1.02)}
+.card.af .bd::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);pointer-events:none}
+.card.af .bd::before{content:"";position:absolute;inset:0 0 auto 0;height:22%;background:linear-gradient(to bottom,rgba(0,0,0,.45),transparent);pointer-events:none;z-index:1}
+.card.af .nm,.card.af .tg,.card.af .ed{z-index:2}
+.card.af .tg{background:#F9037E;color:var(--w);border-radius:999px;padding:7px 12px;top:12px;left:12px}
 .card .cs{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
 .card .cs span{background:var(--w);color:var(--k);border-radius:999px;padding:10px 18px}
 .card .go{color:var(--k);text-decoration:none;border-bottom:2px solid var(--k);justify-self:start;padding-bottom:3px}
@@ -259,7 +264,7 @@ footer .credits{color:#6E6E6A;font-size:12px;line-height:1.5;margin-top:16px;max
   <div class="head"><h2 class="disp">Drie clubs, in concept</h2><p>Verzonnen clubs om te laten zien hoe een collectie eruitziet. Hoogwater is uitgewerkt, de andere twee volgen.</p></div>
   <div class="cards">
     <article class="card soon"><div class="bd"><img src="img/unsplash/rook.jpg" alt=""><div class="cs"><span class="cap">Coming soon</span></div><span class="cap tg">Concept</span><span class="cap ed">100 jaar</span><div class="nm"><small>SC</small>Kalkzand</div></div><h3>Jubileumdoos</h3><p>Genummerde sjaal, archiefposter en pin in één doos, voor het eeuwfeest in 2027.</p></article>
-    <article class="card"><div class="bd"><img src="img/amateur/langs-de-lijn.jpg" alt="Vrijwilligers in VV Hoogwater-trainingsjacks langs de lijn"><span class="cap tg">Uitgewerkt</span><span class="cap ed">Amateurclub</span><div class="nm"><small>VV</small>Hoogwater</div></div><h3>Clubcollectie</h3><p>Trainingsjack, sjaal, pet, vaantje, mok en jubileumdoos in één lijn.</p><a class="cap go" href="#amateur">Bekijk de collectie</a></article>
+    <article class="card af"><div class="bd"><img src="img/amateur/langs-de-lijn.jpg" alt="Vrijwilligers in VV Hoogwater-trainingsjacks langs de lijn"><span class="cap tg">Uitgewerkt</span><span class="cap ed">Amateurclub</span><div class="nm"><small>VV</small>Hoogwater</div></div><h3>Clubcollectie</h3><p>Trainingsjack, sjaal, pet, vaantje, mok en jubileumdoos in één lijn.</p><a class="cap go" href="#amateur">Bekijk de collectie</a></article>
     <article class="card soon"><div class="bd"><img src="img/unsplash/ultras.jpg" alt=""><div class="cs"><span class="cap">Coming soon</span></div><span class="cap tg">Concept</span><span class="cap ed">Kampioen</span><div class="nm"><small>RKSV</small>Ommezwaai</div></div><h3>Kampioenseditie</h3><p>Shirt, poster en een doos voor de selectie, in één kleur.</p></article>
   </div>
 </section>
